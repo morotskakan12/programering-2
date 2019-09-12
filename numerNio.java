@@ -2,7 +2,7 @@ package intro;
 
 public class numerNio {
 	public static void main( String [] arg){
-		
+		System.out.print(randomSumm());
 	}
 	public static int randomSumm () {
 		int random = (int) (Math.random() * 50) + 1;
@@ -23,8 +23,8 @@ public class numerNio {
 		
 		return reverse;
 	}
-	public static char[] arry(String saker){
-		char[] chars = saker.toCharArray();
+	public static Object arry(Object saker){
+		 Object.class [] arry = skaer.toObject.class()
 		
 		return chars;
 	}
