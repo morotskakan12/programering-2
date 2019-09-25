@@ -1,6 +1,9 @@
-package furstainlämnig;
+package furstainl
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+ï¿½mnig;
 public class nummerEtt {
 	
 		public static void main( String [] arg){
@@ -44,7 +47,7 @@ public class nummerEtt {
 			int num = 0;
 			char[] chars = ord.toCharArray();
 			if (ord.length()==1) {
-				ord=("?????"+ord+" "+"detta blir svårt");
+				ord=("?????"+ord+" "+"detta blir svï¿½rt");
 				anagramm.add(ord);
 				return anagramm;
 			}
