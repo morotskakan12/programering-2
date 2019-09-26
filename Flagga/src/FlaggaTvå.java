@@ -1,45 +1,30 @@
-import javafx.application.Application;
+
 import javafx.scene.Group;
-import javafx.scene.Scene;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-
-public class FlaggaTvå extends Application {
 
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        launch(args);
-    }
+public class FlaggaTvå {
 
-
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public static Group createFlagTvå(Group panel) {
         //Drawing a Circle
-        Rectangle r = new Rectangle();
+        Rectangle red = new Rectangle();
+        Rectangle blu = new Rectangle();
         //Setting the properties of the circle
-        r.setHeight(300);
-        r.setWidth(300);
-        r.setX(50);
-        r.setY(50);
-        /*r.setArcWidth(20);
-        r.setArcHeight(20);
+        blu.setHeight(300);
+        blu.setWidth(200);
+        blu.setX(400);
+        red.setHeight(300);
+        red.setWidth(200);
 
-        */
-        r.setFill(Color.RED);
+        blu.setFill(Color.GREEN);
+        red.setFill(Color.ORANGE);
         //Creating a Group object
-        Group root = new Group(r);
-
+        panel.getChildren().addAll(blu,red);
+        return panel;
         //Creating a scene object
-        Scene scene = new Scene(root, 600, 300);
-        //Setting title to the Stage
-        primaryStage.setTitle("Drawing a Circle");
 
-        primaryStage.setScene(scene);
-
-        primaryStage.show();
     }
 
 }
