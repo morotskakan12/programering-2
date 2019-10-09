@@ -11,6 +11,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class StartPage extends Application implements EventHandler<ActionEvent> {
 
     public static void main(String[] args) {
@@ -41,6 +43,8 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     Button knapCler = new Button(" clar ");
     Button knapAnser = new Button(" = ");
 
+    ArrayList<Button> numpad = new ArrayList<Button>();
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         BorderPane border = new BorderPane();
@@ -51,10 +55,10 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
         VBox vbox3 = new VBox();
         VBox vbox4 = new VBox();
 
-        vbox2.getChildren().addAll(knap4, knap5, knap6,knap0);
-        vbox3.getChildren().addAll(knap7, knap8, knap9,knapAnser);
-        vbox.getChildren().addAll(knap1, knap2, knap3,knapCler);
-        vbox4.getChildren().addAll(knapD,knapMM,knapM,knapP);
+        vbox2.getChildren().addAll(knap4, knap5, knap6, knap0);
+        vbox3.getChildren().addAll(knap7, knap8, knap9, knapAnser);
+        vbox.getChildren().addAll(knap1, knap2, knap3, knapCler);
+        vbox4.getChildren().addAll(knapD, knapMM, knapM, knapP);
         text.setBackground(new Background(new BackgroundFill(Color.rgb(220, 0, 20), CornerRadii.EMPTY, Insets.EMPTY)));
         text.setPrefSize(150, 80);
         text.setAlignment(Pos.CENTER);
@@ -77,7 +81,7 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
 
         hboxTop.getChildren().add(text);
 
-        hbox.getChildren().addAll(vbox, vbox2, vbox3,vbox4);
+        hbox.getChildren().addAll(vbox, vbox2, vbox3, vbox4);
 
         border.setTop(hboxTop);
         border.setCenter(hbox);
@@ -93,59 +97,59 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == knap1) {
-             number = number+ "1";
+            number = number + "1";
             text.setText(number);
         }
         if (event.getSource() == knap2) {
-            number = number+ "2";
+            number = number + "2";
             text.setText(number);
         }
         if (event.getSource() == knap3) {
-            number = number+ "3";
+            number = number + "3";
             text.setText(number);
         }
         if (event.getSource() == knap4) {
-            number = number+ "4";
+            number = number + "4";
             text.setText(number);
         }
         if (event.getSource() == knap5) {
-            number = number+ "5";
+            number = number + "5";
             text.setText(number);
         }
         if (event.getSource() == knap6) {
-            number = number+ "6";
+            number = number + "6";
             text.setText(number);
         }
         if (event.getSource() == knap7) {
-            number = number+ "7";
+            number = number + "7";
             text.setText(number);
         }
         if (event.getSource() == knap8) {
-            number = number+ "8";
+            number = number + "8";
             text.setText(number);
         }
         if (event.getSource() == knap9) {
-            number = number+ "9";
+            number = number + "9";
             text.setText(number);
         }
         if (event.getSource() == knapP) {
-            number = number+ "+";
+            number = number + "+";
             text.setText(number);
         }
         if (event.getSource() == knapM) {
-            number = number+ "-";
+            number = number + "-";
             text.setText(number);
         }
         if (event.getSource() == knapD) {
-            number = number+ "/";
+            number = number + "/";
             text.setText(number);
         }
         if (event.getSource() == knapMM) {
-            number = number+ "x";
+            number = number + "x";
             text.setText(number);
         }
         if (event.getSource() == knap0) {
-            number = number+ "0";
+            number = number + "0";
             text.setText(number);
         }
         if (event.getSource() == knapCler) {
@@ -158,4 +162,17 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
             number = "";
         }
     }
+
+    public void test() {
+
+        char[] teken = {'1','2','3','4','5','6','7','8','9','0',',','+','-','/','*'};
+        for (char t : teken) {
+            Button temp = new Button("" + t);
+            temp.setOnAction(event -> {});
+            numpad.add(temp);
+        }
+
+
+    }
 }
+
