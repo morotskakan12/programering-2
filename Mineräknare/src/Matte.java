@@ -1,3 +1,7 @@
 public abstract class Matte  {
-    public abstract int calkulat();
+    public int matte(String talFörljd) {
+        return 0 ;
+    }
+
+    public abstract int calkulat(int tal, int talTvå);
 }
