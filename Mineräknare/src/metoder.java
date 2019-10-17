@@ -9,18 +9,6 @@ public class metoder {
         }
         return chars;
     }
-
-    public static int termer(String talFörljd) {
-        int tal = 0;
-        for (int i = 0; talFörljd.length() > i; i++) {
-            char temp = talFörljd.charAt(i);
-            if ((temp == '+') || (temp == '-') || (temp == '*') | (temp == '/')) {
-                tal++;
-            }
-
-        }
-        return tal;
-    }
 }
 
 

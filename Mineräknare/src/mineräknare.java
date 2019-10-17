@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+
 public class mineräknare extends Matte {
 
     @Override
     public int matte(String talFörljd){
     boolean next = false;
     int tal  = 0;
-
-    if(metoder.termer(talFörljd) == 1){
+        ArrayList<Character> chars = new ArrayList<Character>();
+        chars = metoder.toCharArryList(talFörljd);
+    if(chars.size() == 1){
         if (){}
         else if (){}
         else if (){}
