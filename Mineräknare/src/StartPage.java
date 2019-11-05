@@ -23,7 +23,7 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     String number = "";
     TextField text = new TextField();
 
-    Button knapCler = new Button(" clar ");
+    Button knapCler = new Button(" clear ");
     Button knapAnser = new Button(" = ");
     GridPane buten = new GridPane();
     ArrayList<Button> numpad = new ArrayList<Button>();
@@ -32,29 +32,32 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     public void start(Stage primaryStage) throws Exception {
         BorderPane border = new BorderPane();
         HBox hboxTop = new HBox();
-        HBox hbox = new HBox();
-        HBox vbox2 = new HBox();
+
+        HBox hbox2 = new HBox();
         buttenStor();
         setButten();
         buten.getChildren();
 
-        vbox2.getChildren().addAll(knapAnser,knapCler);
+        hbox2.getChildren().addAll(knapAnser,knapCler);
 
-        text.setBackground(new Background(new BackgroundFill(Color.rgb(220, 0, 20), CornerRadii.EMPTY, Insets.EMPTY)));
-        text.setPrefSize(150, 80);
+        text.setBackground(new Background(new BackgroundFill(Color.rgb(146, 146, 146), CornerRadii.EMPTY, Insets.EMPTY)));
+        text.setPrefSize(250, 80);
         text.setAlignment(Pos.CENTER);
 
         knapCler.setOnAction(this);
         knapAnser.setOnAction(this);
-
+        buten.add(knapAnser,1,6);
+        buten.add(knapCler,2,6);
+        knapAnser.setPrefSize(50,50);
+        knapCler.setPrefSize(50,50);
         hboxTop.getChildren().add(text);
 
-        hbox.getChildren().addAll(vbox2);
+
 
         border.setTop(hboxTop);
         border.setCenter(buten);
-        border.setBottom(vbox2);
-        Scene scene = new Scene(border, 600, 350);
+
+        Scene scene = new Scene(border, 250, 200);
 
         primaryStage.setTitle("fy fan vad göt");
         primaryStage.setScene(scene);
@@ -70,7 +73,8 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
             text.setText(number);
         }
         if (event.getSource() == knapAnser) {
-            number = "detta är lika med något";
+            mineräknare m = new mineräknare();
+            number = number.valueOf(m.matte(number)) ;
             text.setText(number);
             number = "";
         }
@@ -89,9 +93,10 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     }
     public void buttenStor() {
 
-        char[] teken = {'1','2','3','4','5','6','7','8','9','0',',','+','-','/','*'};
+        char[] teken = {'1','2','3','4','5','6','7','8','9','0','.','+','-','/','*'};
         for (char t : teken) {
             Button temp = new Button("" + t);
+            temp.setPrefSize(50,50);
             temp.setOnAction(event -> {
                 number = number+ "" + t;
                 text.setText(number);

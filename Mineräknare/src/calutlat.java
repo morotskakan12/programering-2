@@ -1,24 +1,30 @@
 public interface calutlat {
-    int tal(int summa, int sum);
-}
+    double calculate(double a, double b);
 
+}
 
 class addeton implements calutlat {
 
     @Override
-    public int tal(int summa, int sum) {
-        additon hej = new additon();
-            summa = hej.calkulat(summa,sum);
-            return summa;
-
+    public double calculate(double a, double b) {
+        return a + b;
     }
 }
 
 class subtraktion implements calutlat{
-    public int tal(int summa, int sum){
-        summa = 0 ;
-        return summa ;
+
+    @Override
+    public double calculate(double a, double b) {
+        return a - b;
     }
 }
-
-
+class multiplikation implements calutlat{
+    public double calculate(double a, double b){
+        return a*b;
+    }
+}
+class division implements calutlat{
+    public double calculate(double a, double b){
+        return a/b;
+    }
+}

@@ -1,14 +1,23 @@
 
 import javafx.scene.Group;
 
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
-public class FlaggaTvå {
+public class FlaggaTvå extends flaggaAB {
 
-    public static Group createFlagTvå(Group panel) {
+    public static Node createFlagTvå(Group group) {
+    }
+
+    @Override
+    public String getFlagName(){return "FlaggaTvå";}
+
+    @Override
+    public Node getFlag() {
         //Drawing a Circle
+        Group gp = new Group();
         Rectangle red = new Rectangle();
         Rectangle blu = new Rectangle();
         //Setting the properties of the circle
@@ -21,8 +30,8 @@ public class FlaggaTvå {
         blu.setFill(Color.GREEN);
         red.setFill(Color.ORANGE);
         //Creating a Group object
-        panel.getChildren().addAll(blu,red);
-        return panel;
+        gp.getChildren().addAll(blu,red);
+        return gp;
         //Creating a scene object
 
     }

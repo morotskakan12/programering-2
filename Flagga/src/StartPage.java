@@ -1,4 +1,3 @@
-import com.sun.glass.ui.Menu;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,8 +12,6 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-
-import java.awt.*;
 
 
 public class StartPage extends Application implements EventHandler<ActionEvent> {
@@ -36,11 +33,8 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
 	public void start(Stage primaryStage) throws Exception
 
 	{
-
-
 		HBox hbox = addHBox();
 		border.setTop(hbox);
-
 
 		frankrike.setOnAction(this);
 		schweiz.setOnAction(this);
@@ -48,7 +42,7 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
 		italien.setOnAction(this);
 		sverge.setOnAction(this);
 
-		Scene scene = new Scene(border, 600, 350, Color.RED);
+		Scene scene = new Scene(border, 600, 350);
 		primaryStage.setTitle("fy fan vad göt");
 		primaryStage.setScene(scene);
 
@@ -59,7 +53,7 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
 
 	public HBox addHBox() {
 		HBox hbox = new HBox();
-		hbox.setPadding(new Insets(15, 12, 15, 12));
+		hbox.setPadding(new Insets(15, 12,15,12));
 		hbox.setSpacing(10);
 		hbox.setStyle("-fx-background-color: #336699;");
 
@@ -86,8 +80,7 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
 
 		}
 		if (event.getSource() == frankrike){
-			border.setCenter(Flagga.createFlag(new Group()));
-			border.setBackground(new Background(new BackgroundFill(Color.rgb(220, 220, 220), CornerRadii.EMPTY, Insets.EMPTY)));
+			setFlag(new Flagga());
 		}
 		if (event.getSource() == irland){
 			border.setCenter(FlaggaTvå.createFlagTvå(new Group()));
@@ -101,5 +94,9 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
 			border.setCenter(FlaggaFem.createFlagFem(new StackPane()));
 			border.setBackground(new Background(new BackgroundFill(Color.rgb(220, 0, 20), CornerRadii.EMPTY, Insets.EMPTY)));
 		}
+	}
+	public static void setFlag (flaggaAB flag){
+
+
 	}
 }

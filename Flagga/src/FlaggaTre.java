@@ -7,11 +7,15 @@ import javafx.scene.shape.Rectangle;
 
 
 
-public class FlaggaTre{
+public class FlaggaTre extends flaggaAB{
 
+    @Override
+    public String getFlagName(){return "FlaggaTre";}
 
-    public static Group createFlagTre(Group panel) {
+    @Override
+    public  Group getFlag() {
         //Drawing a Circle
+        Group gp = new Group();
         Rectangle red = new Rectangle();
         Rectangle blu = new Rectangle();
         //Setting the properties of the circle
@@ -28,8 +32,8 @@ public class FlaggaTre{
         blu.setFill(Color.RED);
         red.setFill(Color.GREEN);
         //Creating a Group object
-        panel.getChildren().addAll(blu,red);
-        return panel;
+        gp.getChildren().addAll(blu,red);
+        return gp;
     }
 
 }
