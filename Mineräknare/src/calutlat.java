@@ -28,3 +28,12 @@ class division implements calutlat{
         return a/b;
     }
 }
+class power implements calutlat{
+    public double calculate(double a, double b){ return Math.pow(a, b);}
+}
+class prosent implements calutlat{
+    public double calculate(double a, double b){
+        a = a/100;
+        System.out.println(a);
+        return a*b ;}
+}

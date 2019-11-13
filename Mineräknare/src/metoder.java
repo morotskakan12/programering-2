@@ -49,7 +49,7 @@ public class metoder {
         }
 
     public static boolean eqolräkna (char index){
-        if ((index == '*')||(index == '/')||(index == '+')||(index == '-')){
+        if ((index == '*')||(index == '/')||(index == '+')||(index == '-')||(index == '^')||(index == '%')){
 
             return true;
         }
@@ -57,21 +57,25 @@ public class metoder {
     }
     public static ArrayList<Double> toIntArryList(String talFörljd) {
         ArrayList<Double> index = new ArrayList<Double>();
-        double dub = 0.0;
-        String temp = "";
+        double dub;
+        String temp = "0";
+        // string +8
 
-        for (int i = 0; i<talFörljd.length();i++) {
-            if (eqolNumber(talFörljd.charAt(i))) {
-                temp = temp + talFörljd.charAt(i);
-                if(i == talFörljd.length()-1 ){
-                    dub = Double.valueOf(temp);
-                    index.add(dub);
+        for (int i = 0; i < talFörljd.length(); i++){
+            if (eqolräkna(talFörljd.charAt(i))){
+                for(int e = 0;e<i;e++) {
+                    temp = temp + talFörljd.charAt(e);
                 }
-
-            }else {
-                 dub = Double.valueOf(temp);
+                dub = Double.valueOf(temp);
+                index.add(dub);
+                temp = "0";
+                for (int e = i+1;e<talFörljd.length();e++){
+                    temp = temp + talFörljd.charAt(e);
+                }
+                dub = Double.valueOf(temp);
                 index.add(dub);
                 temp = "";
+                break;
             }
         }
         return index;

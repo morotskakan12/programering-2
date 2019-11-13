@@ -22,7 +22,7 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
 
     String number = "";
     TextField text = new TextField();
-
+    Button prosent = new Button("%");
     Button knapCler = new Button(" clear ");
     Button knapAnser = new Button(" = ");
     GridPane buten = new GridPane();
@@ -43,13 +43,15 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
         text.setBackground(new Background(new BackgroundFill(Color.rgb(146, 146, 146), CornerRadii.EMPTY, Insets.EMPTY)));
         text.setPrefSize(250, 80);
         text.setAlignment(Pos.CENTER);
-
+        prosent.setOnAction(this);
         knapCler.setOnAction(this);
         knapAnser.setOnAction(this);
-        buten.add(knapAnser,1,6);
-        buten.add(knapCler,2,6);
+        buten.add(prosent,5,0);
+        buten.add(knapAnser,5,2);
+        buten.add(knapCler,5,3);
         knapAnser.setPrefSize(50,50);
         knapCler.setPrefSize(50,50);
+        prosent.setPrefSize(50,50);
         hboxTop.getChildren().add(text);
 
 
@@ -68,6 +70,10 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent event) {
 
+        if(event.getSource()==prosent){
+            number = number+ "%";
+            text.setText(number);
+        }
         if (event.getSource() == knapCler) {
             number = "";
             text.setText(number);
@@ -81,8 +87,8 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     }
     public void setButten(){
        int indexKnap = 0 ;
-        for(int indexVågrät = 1; indexVågrät < 6;indexVågrät++ ){
-            for(int indexLodrät = 1; indexLodrät < 4;indexLodrät++ ){
+        for(int indexVågrät = 0; indexVågrät < 4;indexVågrät++ ){
+            for(int indexLodrät = 0; indexLodrät < 4;indexLodrät++ ){
                 buten.add(numpad.get(indexKnap),indexVågrät,indexLodrät);
                 indexKnap++;
                 if(indexKnap == numpad.size()){
@@ -93,7 +99,7 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     }
     public void buttenStor() {
 
-        char[] teken = {'1','2','3','4','5','6','7','8','9','0','.','+','-','/','*'};
+        char[] teken = {'1','2','3','4','5','6','7','8','9','0','.','+','-','/','*','^'};
         for (char t : teken) {
             Button temp = new Button("" + t);
             temp.setPrefSize(50,50);
