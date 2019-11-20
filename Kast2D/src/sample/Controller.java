@@ -32,16 +32,17 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         windo.prefHeight(200);
         windo.prefWidth(250);
         windo.setStyle("-fx-background-color: GREEN;");
-        windo.getTransforms().add(new Rotate(180, 213, 250));
-        angle.setMaxSize(75, 100);
-        angle.setMinSize(75, 100);
-        velosity.setMaxSize(75, 100);
-        velosity.setMinSize(75, 100);
+        windo.getTransforms().add(new Rotate(180, 125, 125));
+        angle.setMaxSize(50, 100);
+        angle.setMinSize(50, 100);
+        velosity.setMaxSize(50, 100);
+        velosity.setMinSize(50, 100);
+        enter.setPrefSize(50,50);
         conterner.getChildren().addAll(velosity, angle, enter);
         enter.setOnAction(this);
         border.add(conterner, 1, 1);
         border.add(windo, 2, 1);
-        Scene scene = new Scene(border, 500, 500);
+        Scene scene = new Scene(border, 300, 250);
 
         primaryStage.setTitle("fy fan vad göt");
         primaryStage.setScene(scene);
@@ -49,14 +50,23 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         primaryStage.show();
     }
 
-    public static Pane drawBow(Pane zero, double v, double a, double t) {
+    public  Pane drawBow(Pane zero, double v, double a, double t) {
 
         double x;
         double y;
         double g = 9.82;
         y = ((v * sin(a) * t) - ((g * (pow(t, 2))) / 2));
         x = (v * cos(a) * t);
-        if(x < 425 && y > 0) {
+        System.out.println(y);
+        if((x < 250) && (y > 0)) {
+            Circle temp = new Circle();
+            temp.setFill(Color.RED);
+            temp.setRadius(1);
+            temp.setCenterX(x);
+            temp.setCenterY(y);
+            zero.getChildren().add(temp);
+        }else if (y > 0){
+            transform(border,maxY(a,v),maxX(a,v));
             Circle temp = new Circle();
             temp.setFill(Color.RED);
             temp.setRadius(1);
@@ -66,6 +76,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         }
         return zero;
     }
+
     public  double maxY(double a,double v){
         a = toRadians(a);
         return a = (pow(v,2)*pow(sin(a),2))/(2*9.82) ;
@@ -84,14 +95,13 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             System.out.println(maxX(a,v));
             System.out.println(maxY(a,v));
             a = toRadians(a);
-            for (double t = 0.1; t < 100; t = t + 0.1) {
+            for (double t = 0.01; t < 100; t = t + 0.01) {
                 windo = drawBow(windo, v, a, t);
             }
 
         }
-
-
+    }
+    public void transform(GridPane gr,double x,double y){
 
     }
-
 }
