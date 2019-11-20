@@ -19,8 +19,8 @@ import static java.lang.Math.*;
 
 public class Controller extends Application implements EventHandler<ActionEvent> {
     GridPane border = new GridPane();
-    TextField velosity = new TextField("40");
-    TextField angle = new TextField("40");
+    TextField velosity = new TextField("15.49160825");
+    TextField angle = new TextField("45");
 
     Pane windo = new Pane();
 
@@ -32,7 +32,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         windo.prefHeight(200);
         windo.prefWidth(250);
         windo.setStyle("-fx-background-color: GREEN;");
-        windo.getTransforms().add(new Rotate(180, 125, 125));
+        windo.getTransforms().add(new Rotate(180, 120, 120));
         angle.setMaxSize(50, 100);
         angle.setMinSize(50, 100);
         velosity.setMaxSize(50, 100);
@@ -43,7 +43,8 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         border.add(conterner, 1, 1);
         border.add(windo, 2, 1);
         Scene scene = new Scene(border, 300, 250);
-
+        primaryStage.setMaxWidth(300);
+        primaryStage.setMaxHeight(275);
         primaryStage.setTitle("fy fan vad göt");
         primaryStage.setScene(scene);
 
@@ -57,7 +58,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         double g = 9.82;
         y = ((v * sin(a) * t) - ((g * (pow(t, 2))) / 2));
         x = (v * cos(a) * t);
-        System.out.println(y);
+
         if((x < 250) && (y > 0)) {
             Circle temp = new Circle();
             temp.setFill(Color.RED);
@@ -66,7 +67,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             temp.setCenterY(y);
             zero.getChildren().add(temp);
         }else if (y > 0){
-            transform(border,maxY(a,v),maxX(a,v));
+            transform(maxY(a,v),maxX(a,v));
             Circle temp = new Circle();
             temp.setFill(Color.RED);
             temp.setRadius(1);
@@ -74,6 +75,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             temp.setCenterY(y);
             zero.getChildren().add(temp);
         }
+
         return zero;
     }
 
@@ -97,11 +99,13 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             a = toRadians(a);
             for (double t = 0.01; t < 100; t = t + 0.01) {
                 windo = drawBow(windo, v, a, t);
+                windo.setScaleX(windo.getScaleX() * 2);
+                windo.setScaleY(windo.getScaleY() * 2);
             }
 
         }
     }
-    public void transform(GridPane gr,double x,double y){
+    public void transform(double x,double y){
 
     }
 }
