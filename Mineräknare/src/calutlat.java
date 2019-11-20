@@ -1,11 +1,9 @@
 public interface calutlat {
     double calculate(double a, double b);
-
 }
 
 class addeton implements calutlat {
 
-    @Override
     public double calculate(double a, double b) {
         return a + b;
     }
@@ -13,7 +11,6 @@ class addeton implements calutlat {
 
 class subtraktion implements calutlat{
 
-    @Override
     public double calculate(double a, double b) {
         return a - b;
     }
@@ -29,11 +26,13 @@ class division implements calutlat{
     }
 }
 class power implements calutlat{
-    public double calculate(double a, double b){ return Math.pow(a, b);}
+    public double calculate(double a, double b){
+        return Math.pow(a, b);
+    }
 }
 class prosent implements calutlat{
     public double calculate(double a, double b){
         a = a/100;
-        System.out.println(a);
-        return a*b ;}
+        return a*b ;
+    }
 }

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -21,75 +22,82 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
     }
 
     String number = "";
-    TextField text = new TextField();
-    Button prosent = new Button("%");
-    Button knapCler = new Button(" clear ");
-    Button knapAnser = new Button(" = ");
-    GridPane buten = new GridPane();
+    TextField textOutPot = new TextField();
+    Button buttonProsent = new Button("%");
+    Button buttonCler = new Button(" clear ");
+    Button buttonAnser = new Button(" = ");
+    GridPane buttonContainer = new GridPane();
     ArrayList<Button> numpad = new ArrayList<Button>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        BorderPane border = new BorderPane();
-        HBox hboxTop = new HBox();
-
-        HBox hbox2 = new HBox();
-        buttenStor();
+        GridPane border = new GridPane();
+        HBox toptextfield = new HBox();
+        HBox operatorBottens = new HBox();
+        buttonStor();
         setButten();
-        buten.getChildren();
+        operatorBottens.getChildren().addAll(buttonCler,buttonAnser);
+        buttonContainer.getChildren();
 
-        hbox2.getChildren().addAll(knapAnser,knapCler);
+        textOutPot.setBackground(new Background(new BackgroundFill(Color.rgb(146, 146, 146), CornerRadii.EMPTY, Insets.EMPTY)));
+        textOutPot.setPrefSize(250, 80);
+        textOutPot.setAlignment(Pos.CENTER);
 
-        text.setBackground(new Background(new BackgroundFill(Color.rgb(146, 146, 146), CornerRadii.EMPTY, Insets.EMPTY)));
-        text.setPrefSize(250, 80);
-        text.setAlignment(Pos.CENTER);
-        prosent.setOnAction(this);
-        knapCler.setOnAction(this);
-        knapAnser.setOnAction(this);
-        buten.add(prosent,5,0);
-        buten.add(knapAnser,5,2);
-        buten.add(knapCler,5,3);
-        knapAnser.setPrefSize(50,50);
-        knapCler.setPrefSize(50,50);
-        prosent.setPrefSize(50,50);
-        hboxTop.getChildren().add(text);
+        buttonProsent.setOnAction(this);
+        buttonCler.setOnAction(this);
+        buttonAnser.setOnAction(this);
+
+        buttonContainer.add(buttonProsent,5,0);
+        buttonContainer.add(buttonAnser,5,2);
+        buttonContainer.add(buttonCler,5,3);
+
+        buttonAnser.setPrefSize(50,50);
+        buttonCler.setPrefSize(50,50);
+        buttonProsent.setPrefSize(50,50);
 
 
 
-        border.setTop(hboxTop);
-        border.setCenter(buten);
+        toptextfield.getChildren().add(textOutPot);
+        border.add(toptextfield,1,0);
+        border.add(buttonContainer,1,1);
 
-        Scene scene = new Scene(border, 250, 200);
+        border.maxHeight(250);
+        border.maxWidth(200);
+        Scene scene = new Scene(border,240,250);
 
+        primaryStage.setResizable(false);
         primaryStage.setTitle("fy fan vad göt");
         primaryStage.setScene(scene);
-
         primaryStage.show();
     }
 
     @Override
     public void handle(ActionEvent event) {
 
-        if(event.getSource()==prosent){
-            number = number+ "%";
-            text.setText(number);
+        if(event.getSource()== buttonProsent){
+            number = number + "%";
+            textOutPot.setText(number);
         }
-        if (event.getSource() == knapCler) {
+        if (event.getSource() == buttonCler) {
             number = "";
-            text.setText(number);
+            textOutPot.setText(number);
         }
-        if (event.getSource() == knapAnser) {
+        if (event.getSource() == buttonAnser) {
             mineräknare m = new mineräknare();
             number = number.valueOf(m.matte(number)) ;
-            text.setText(number);
+
+            textOutPot.setText(number);
             number = "";
+        }
+        if (event.getSource() ==   KeyEvent.KEY_PRESSED){
+            textOutPot.setText(number);
         }
     }
     public void setButten(){
        int indexKnap = 0 ;
         for(int indexVågrät = 0; indexVågrät < 4;indexVågrät++ ){
             for(int indexLodrät = 0; indexLodrät < 4;indexLodrät++ ){
-                buten.add(numpad.get(indexKnap),indexVågrät,indexLodrät);
+                buttonContainer.add(numpad.get(indexKnap),indexVågrät,indexLodrät);
                 indexKnap++;
                 if(indexKnap == numpad.size()){
                     break;
@@ -97,15 +105,15 @@ public class StartPage extends Application implements EventHandler<ActionEvent> 
             }
         }
     }
-    public void buttenStor() {
+    public void buttonStor() {
 
-        char[] teken = {'1','2','3','4','5','6','7','8','9','0','.','+','-','/','*','^'};
-        for (char t : teken) {
+        char[] numarry = {'1','4','7','.','2','5','8','0','3','6','9','+','-','/','*','^'};
+        for (char t : numarry) {
             Button temp = new Button("" + t);
             temp.setPrefSize(50,50);
             temp.setOnAction(event -> {
                 number = number+ "" + t;
-                text.setText(number);
+                textOutPot.setText(number);
 
             });
             numpad.add(temp);
