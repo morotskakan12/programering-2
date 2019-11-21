@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class metoder {
-    public static ArrayList<Character> toCharArryList(String talFörljd) {
+    public static ArrayList<Character> toCharArryList(String progression) {
 
         ArrayList<Character> chars = new ArrayList<Character>();
-        for (int i = 0; talFörljd.length() > i; i++) {
+        for (int i = 0; progression.length() > i; i++) {
 
-            if (eqolArithmetic(talFörljd.charAt(i))) {
+            if (eqolArithmetic(progression.charAt(i))) {
 
-               char temp = talFörljd.charAt(i);
+               char temp = progression.charAt(i);
 
                chars.add(temp);
            }
@@ -25,20 +25,16 @@ public class metoder {
 
         for (int i = 0; i < progression.length(); i++){
             if (eqolNumber(progression.charAt(i))){
-                System.out.println(progression.charAt(i));
                 temp = temp + progression.charAt(i);
-                System.out.println(temp);
             }
             else {
                 dub = Double.valueOf(temp);
-                System.out.println(dub);
                 index.add(dub);
                 temp = "0";
             }
         }
         dub = Double.valueOf(temp);
         index.add(dub);
-        System.out.println(index);
         return index;
     }
 

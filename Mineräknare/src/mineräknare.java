@@ -24,7 +24,6 @@ public class mineräknare {
         if ((chars.size() == 1) ) {
 
             index = metoder.toIntArryList(progression);
-            System.out.println(index);
             a = index.get(0);
             b = index.get(1);
 
