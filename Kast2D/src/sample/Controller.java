@@ -2,10 +2,15 @@ package sample;
 
 import com.sun.org.apache.bcel.internal.generic.INEG;
 import javafx.application.Application;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -13,6 +18,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 import static java.lang.Math.*;
@@ -22,7 +28,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     TextField velosity = new TextField("15.49160825");
     TextField angle = new TextField("45");
 
-    Pane windo = new Pane();
+    Pane  windo = new Pane ();
 
     VBox conterner = new VBox();
     Button enter = new Button("Enter");
@@ -99,8 +105,8 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             a = toRadians(a);
             for (double t = 0.01; t < 100; t = t + 0.01) {
                 windo = drawBow(windo, v, a, t);
-                windo.setScaleX(windo.getScaleX() * 2);
-                windo.setScaleY(windo.getScaleY() * 2);
+                ZoomingPane z = new ZoomingPane(windo);
+
             }
 
         }
@@ -108,4 +114,5 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     public void transform(double x,double y){
 
     }
+
 }
