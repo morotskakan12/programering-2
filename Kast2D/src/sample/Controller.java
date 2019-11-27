@@ -38,7 +38,8 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         windo.prefHeight(200);
         windo.prefWidth(250);
         windo.setStyle("-fx-background-color: GREEN;");
-        windo.getTransforms().add(new Rotate(180, 120, 120));
+        //windo.getTransforms().add(new Rotate(180, 120, 120));
+        windo.rotateProperty().setValue(180);
         angle.setMaxSize(50, 100);
         angle.setMinSize(50, 100);
         velosity.setMaxSize(50, 100);
@@ -46,11 +47,11 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         enter.setPrefSize(50,50);
         conterner.getChildren().addAll(velosity, angle, enter);
         enter.setOnAction(this);
-        border.add(conterner, 1, 1);
-        border.add(windo, 2, 1);
+        border.add(conterner, 0, 0);
+        //border.add(windo, 1, 0);
         Scene scene = new Scene(border, 300, 250);
-        primaryStage.setMaxWidth(300);
-        primaryStage.setMaxHeight(275);
+        //primaryStage.setMaxWidth(300);
+        //primaryStage.setMaxHeight(275);
         primaryStage.setTitle("fy fan vad göt");
         primaryStage.setScene(scene);
 
@@ -105,10 +106,11 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             a = toRadians(a);
             for (double t = 0.01; t < 100; t = t + 0.01) {
                 windo = drawBow(windo, v, a, t);
-                ZoomingPane z = new ZoomingPane(windo);
-
             }
+            windo.setScaleX(2);
+            windo.setScaleY(2);
 
+            border.add(windo, 1, 0);
         }
     }
     public void transform(double x,double y){
