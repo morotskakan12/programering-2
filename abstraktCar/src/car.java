@@ -1,4 +1,15 @@
-abstract  class car {
+abstract  class Car {
+    private String _NumberOfDors;
+    public Car (String number){
+
+        _NumberOfDors = number;
+
+    }
+    public String getDors(){
+
+        return _NumberOfDors;
+    }
+
     public abstract String collerOfCar();
     public abstract String Numberplet();
     public abstract String yerOfMaking();

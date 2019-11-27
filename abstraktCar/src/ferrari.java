@@ -1,4 +1,8 @@
-public class ferrari extends car {
+public class ferrari extends Car {
+
+    public ferrari(String number) {
+        super(number);
+    }
 
     public String collerOfCar() {
         return "Red";
