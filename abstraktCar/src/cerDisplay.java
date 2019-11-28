@@ -6,9 +6,20 @@ public class cerDisplay {
         Carryera.setEngine(new v6());
         Enzo.setEngine(new v8());
         Benz.setEngine(new v8());
-        String porscheDisplay[] = {Carryera.collerOfCar(),Carryera.Numberplet(),Carryera.tryEngine(),Carryera.yerOfMaking(),Carryera.carSund()};
-        String ferrariDisplay[] = {Enzo.collerOfCar(),Enzo.Numberplet(),Enzo.tryEngine(),Enzo.yerOfMaking(),Enzo.carSund()};
-        String mercedesDisplay[] = {Benz.collerOfCar(),Benz.Numberplet(),Benz.tryEngine(),Benz.yerOfMaking(),Benz.carSund()};
-        String cerDisplay [][] = {porscheDisplay,ferrariDisplay,mercedesDisplay};
+        Car carDisplay [] = {Carryera,Enzo,Benz};
+        for(Car car: carDisplay){
+            System.out.println("");
+            System.out.println(car);
+            System.out.println("it was built "+car.yerOfMaking());
+            System.out.println("the coller is "+car.collerOfCar());
+            System.out.println("number of doors "+car.getDors());
+            System.out.println("the numberplet is " + car.numberplet());
+            System.out.println("the engine is "+car.tryEngine());
+            System.out.println("the car gos "+car.carSund());
+            System.out.println("-----------------");
+
+
+        }
+
     }
 }

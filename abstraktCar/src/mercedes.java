@@ -7,7 +7,7 @@ public class mercedes extends Car {
     public String collerOfCar() {
         return "Gray";
     }
-    public String Numberplet() {
+    public String numberplet() {
         return "KTH 583";
     }
     public String yerOfMaking() {

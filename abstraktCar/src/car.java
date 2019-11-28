@@ -11,7 +11,7 @@ abstract  class Car {
     }
 
     public abstract String collerOfCar();
-    public abstract String Numberplet();
+    public abstract String numberplet();
     public abstract String yerOfMaking();
     public whtEngine engine;
     public String carSund(){

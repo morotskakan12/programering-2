@@ -9,7 +9,7 @@ public class ferrari extends Car {
     }
 
 
-    public String Numberplet() {
+    public String numberplet() {
         return "JPG 696";
     }
     public String yerOfMaking() {

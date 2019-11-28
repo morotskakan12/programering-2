@@ -4,12 +4,8 @@ public class porsche extends Car {
         super(number);
     }
 
-    public String collerOfCar() {
-        return "Black";
-    }
-
-
-    public String Numberplet() {
+    public String collerOfCar() { return "Black"; }
+    public String numberplet() {
         return "DFG 556";
     }
 
