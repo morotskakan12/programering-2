@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
@@ -35,8 +36,8 @@ public class Controller extends Application implements EventHandler<ActionEvent>
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        windo.prefHeight(200);
-        windo.prefWidth(250);
+        windo.prefHeight(205);
+        windo.prefWidth(200);
         windo.setStyle("-fx-background-color: GREEN;");
         //windo.getTransforms().add(new Rotate(180, 120, 120));
         windo.rotateProperty().setValue(180);
@@ -49,13 +50,25 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         enter.setOnAction(this);
         border.add(conterner, 0, 0);
         //border.add(windo, 1, 0);
-        Scene scene = new Scene(border, 300, 250);
+        Scene scene = new Scene(border, 300, 400);
         //primaryStage.setMaxWidth(300);
         //primaryStage.setMaxHeight(275);
         primaryStage.setTitle("fy fan vad göt");
         primaryStage.setScene(scene);
 
         primaryStage.show();
+    }
+    public Pane drawBagrund (Pane zero,int setSkal){
+        System.out.println("varför");
+        for(int i =0;i<setSkal;i=i+10){
+            Rectangle temp2 =new Rectangle();
+            temp2.setWidth(1);
+            temp2.setHeight(10);
+            temp2.setX(i);
+            temp2.setY(0);
+            zero.getChildren().add(temp2);
+        }
+        return zero;
     }
 
     public  Pane drawBow(Pane zero, double v, double a, double t) {
@@ -73,6 +86,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             temp.setCenterX(x);
             temp.setCenterY(y);
             zero.getChildren().add(temp);
+
         }else if (y > 0){
             transform(maxY(a,v),maxX(a,v));
             Circle temp = new Circle();
@@ -104,11 +118,24 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             System.out.println(maxX(a,v));
             System.out.println(maxY(a,v));
             a = toRadians(a);
-            for (double t = 0.01; t < 100; t = t + 0.01) {
-                windo = drawBow(windo, v, a, t);
+            if (maxX(a,v)<25) {
+                System.out.println("hejdå");
+                windo = drawBagrund(windo, 250);
+                for (double t = 0.01; t < 100; t = t + 0.01) {
+                    windo = drawBow(windo, v, a, t);
+                }
+
+
+            }else if (maxX(a,v)>25) {
+                System.out.println("hej");
+                windo = drawBagrund(windo, 50);
+                for (double t = 0.01; t < 100; t = t + 0.01) {
+                    windo = drawBow(windo, v, a, t);
+
+                }
+                windo.setScaleX(2);
+                windo.setScaleY(2);
             }
-            windo.setScaleX(2);
-            windo.setScaleY(2);
 
             border.add(windo, 1, 0);
         }
