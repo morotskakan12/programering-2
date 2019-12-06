@@ -15,7 +15,7 @@ public abstract class Animal {
     abstract void sleep();
 
     abstract void eat();
-    //öpnar för modifikaton
+    //öpnar för modifikaton i Animol.
     public void setColor(String color){
         _color = color;
     }

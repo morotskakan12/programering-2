@@ -70,6 +70,18 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         }
         return zero;
     }
+    public Pane drawBagrund2 (Pane zero,int setSkal){
+        System.out.println("varför");
+        for(int i =0;i<setSkal;i=i+10){
+            Rectangle temp2 =new Rectangle();
+            temp2.setWidth(1);
+            temp2.setHeight(10);
+            temp2.setX(i);
+            temp2.setY(0);
+            zero.getChildren().add(temp2);
+        }
+        return zero;
+    }
 
     public  Pane drawBow(Pane zero, double v, double a, double t) {
 
@@ -117,8 +129,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             double a = Double.valueOf(angle.getText());
             System.out.println(maxX(a,v));
             System.out.println(maxY(a,v));
-            a = toRadians(a);
-            if (maxX(a,v)<25) {
+            if (maxX(a,v)>120) {
                 System.out.println("hejdå");
                 windo = drawBagrund(windo, 250);
                 for (double t = 0.01; t < 100; t = t + 0.01) {
@@ -126,15 +137,23 @@ public class Controller extends Application implements EventHandler<ActionEvent>
                 }
 
 
-            }else if (maxX(a,v)>25) {
+            }else if (maxX(a,v)<120) {
                 System.out.println("hej");
-                windo = drawBagrund(windo, 50);
+                windo = drawBagrund2(windo, 120);
+                Scale scale = new Scale();
+                scale.setX(2);
+                scale.setY(2);
+                scale.setPivotX(125);
+                scale.setPivotY(70);
+                windo.getTransforms().addAll(scale);
+                //windo.setScaleX(2);
+                //windo.setScaleY(2);
+
                 for (double t = 0.01; t < 100; t = t + 0.01) {
                     windo = drawBow(windo, v, a, t);
 
                 }
-                windo.setScaleX(2);
-                windo.setScaleY(2);
+
             }
 
             border.add(windo, 1, 0);
