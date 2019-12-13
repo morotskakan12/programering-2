@@ -11,19 +11,23 @@ import javafx.stage.Stage;
 import static java.lang.Math.*;
 
 public class graphics  {
-    public Pane drawBagrund (Pane zero, double setSkal){
+    public Pane drawBagrund (Pane zero, int setSkal){
+
+        System.out.println("numer sju");
         for(int i =0;i<setSkal;i=i+10){
-            Rectangle temp2 = new Rectangle();
-            temp2.setWidth(1);
-            temp2.setHeight(10);
-            temp2.setX(i);
-            temp2.setY(0);
-            zero.getChildren().add(temp2);
+
+            Rectangle temp = new Rectangle();
+            temp.setWidth(1);
+            temp.setHeight(10);
+            temp.setX(i);
+            temp.setY(0);
+            zero.getChildren().add(temp);
         }
         return zero;
     }
     public Pane drawBow(Pane zero, double x,double y) {
 
+        System.out.println("numer ota");
         Circle temp = new Circle();
         temp.setFill(Color.RED);
         temp.setRadius(1);

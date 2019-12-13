@@ -131,9 +131,12 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             System.out.println(maxY(a,v));
             if (maxX(a,v)>120) {
                 System.out.println("hejdå");
+                graphics gp = new graphics();
+
                 windo = drawBagrund(windo, 250);
                 for (double t = 0.01; t < 100; t = t + 0.01) {
-                    windo = drawBow(windo, v, a, t);
+                    vacuumThrow vt = new vacuumThrow(1);
+                    windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
                 }
 
 

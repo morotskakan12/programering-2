@@ -7,11 +7,15 @@ public class resistanceThrow extends Calkulat {
 
     @Override
     public double calkulatX(double v, double a, double t) {
+
+
         return 0;
     }
 
     @Override
     public double calkulatY(double v, double a, double t) {
+
+
         return 0;
     }
 }

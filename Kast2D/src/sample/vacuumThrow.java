@@ -14,7 +14,9 @@ public class vacuumThrow extends Calkulat {
 
     @Override
     public double calkulatY(double v, double a, double t) {
+
         return ((v * sin(a) * t) - ((getG() * (pow(t, 2))) / 2));
+
     }
 
 
