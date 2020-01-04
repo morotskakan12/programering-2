@@ -123,7 +123,8 @@ public class Controller extends Application implements EventHandler<ActionEvent>
 
     @Override
     public void handle(ActionEvent event) {
-
+        //graphics g = new graphics();
+        //vacuumThrow v = new vacuumThrow(1);
         if (event.getSource() == enter) {
             double v = Double.valueOf(velosity.getText());
             double a = Double.valueOf(angle.getText());
@@ -142,6 +143,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
 
             }else if (maxX(a,v)<120) {
                 System.out.println("hej");
+                //windo = g.drawBow(windo,x);
                 windo = drawBagrund2(windo, 120);
                 Scale scale = new Scale();
                 scale.setX(2);

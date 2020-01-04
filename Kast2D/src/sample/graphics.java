@@ -13,7 +13,6 @@ import static java.lang.Math.*;
 public class graphics  {
     public Pane drawBagrund (Pane zero, int setSkal){
 
-        System.out.println("numer sju");
         for(int i =0;i<setSkal;i=i+10){
 
             Rectangle temp = new Rectangle();
@@ -27,7 +26,6 @@ public class graphics  {
     }
     public Pane drawBow(Pane zero, double x,double y) {
 
-        System.out.println("numer ota");
         Circle temp = new Circle();
         temp.setFill(Color.RED);
         temp.setRadius(1);
@@ -38,14 +36,14 @@ public class graphics  {
 
         return zero;
     }
-    public Pane skal (Pane windo, double setskal) {
+    public Scale scale (Pane windo, double setskal) {
         Scale scale = new Scale();
         scale.setX(setskal);
         scale.setY(setskal);
         scale.setPivotX(125);
         scale.setPivotY(70);
         windo.getTransforms().addAll(scale);
-        return windo;
+        return scale;
     }
 }
 

@@ -58,7 +58,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 
     public void handle(ActionEvent event) {
         if (event.getSource()==enter){
-            System.out.println("numer ett");
             maxValu max = new maxValu();
             vacuumThrow vacuum = new vacuumThrow(1);
             resistanceThrow res = new resistanceThrow(1);
@@ -73,35 +72,40 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             System.out.println(max.calkulatXmax(v,a ));
             System.out.println();
                 if ((max.calkulatYmax(v,a)<100)&&(max.calkulatXmax(v,a )<50)) {
-                    System.out.println("numer tåv");
-                    vacuum.setZoom(2);
-                    windo = gp.drawBagrund(windo, 50);
+
+                   vacuum.setZoom(2);
+                    Scale scale = gp.scale(windo,vacuum.getZoom());
+                    System.out.println("(max.calkulatYmax(v,a)"+"<100");
+                    windo = gp.drawBagrund(windo, (int)max.calkulatXmax(v,a)+10);
+                    windo.getTransforms().add(scale);
                     for (double i = 0; i<250; i = i+0.01 ){
-                        System.out.println("numer två,2");
+                        System.out.println("=???");
                         windo = gp.drawBow(windo, vacuum.calkulatX(v,a,i),vacuum.calkulatY(v,a,i));
                     }
-                     windo = gp.skal(windo , vacuum.getZoom());
-                }else if ((max.calkulatYmax(v,a)>400)&&(max.calkulatXmax(v,a)>250)){
+                    System.out.println("=???");
+
+
+                }else if ((max.calkulatYmax(v,a)>150)&&(max.calkulatXmax(v,a)>250)){
                     vacuum.setZoom(0.5);
-                    System.out.println("numer tre");
+                    Scale scale = gp.scale(windo,vacuum.getZoom());
+                    System.out.println("(max.calkulatYmax(v,a)"+">400");
                     windo = gp.drawBagrund(windo, 250);
                     for (double i = 0; i<250; i = i+0.01 ){
-                        System.out.println("numer tre.2");
                         windo = gp.drawBow(windo, res.calkulatX(v,a,i),res.calkulatY(v,a,i));
                         windo = gp.drawBow(windo, vacuum.calkulatX(v,a,i),vacuum.calkulatY(v,a,i));
                     }
-                    windo = gp.skal(windo , vacuum.getZoom());
+                    windo.getTransforms().add(scale);
+
                 }else {
-                    System.out.println("numer fyra");
+                    System.out.println("(max.calkulatYmax(v,a)"+"else");
                     vacuum.setZoom(1);
-                    windo = gp.drawBagrund(windo, (int)max.calkulatXmax(v,a)+10);
+                    windo = gp.drawBagrund(windo, (int)max.calkulatXmax(v,a)+20);
                     for (double i = 0; i<250; i = i+0.01 ){
-                        System.out.println("numer fyra.2");
                         windo = gp.drawBow(windo, res.calkulatX(v,a,i),res.calkulatY(v,a,i));
                         windo = gp.drawBow(windo, vacuum.calkulatX(v,a,i),vacuum.calkulatY(v,a,i));
                     }
                 }
-            contaner.add(windo, 0,1);
+            contaner.add(windo, 1,0);
 
         }
         }
