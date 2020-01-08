@@ -6,13 +6,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Scale;
-import javafx.stage.Stage;
 
-import static java.lang.Math.*;
 
 public class graphics  {
     public Pane drawBagrund (Pane zero, int setSkal){
-
+        System.out.println("print Bagrund");
         for(int i =0;i<setSkal;i=i+10){
 
             Rectangle temp = new Rectangle();
@@ -25,7 +23,7 @@ public class graphics  {
         return zero;
     }
     public Pane drawBow(Pane zero, double x,double y) {
-
+            System.out.println("bow");
         Circle temp = new Circle();
         temp.setFill(Color.RED);
         temp.setRadius(1);
@@ -36,14 +34,16 @@ public class graphics  {
 
         return zero;
     }
-    public Scale scale (Pane windo, double setskal) {
+    public Pane scale (Pane windo, double setskal) {
+        System.out.println("scale");
         Scale scale = new Scale();
         scale.setX(setskal);
         scale.setY(setskal);
-        scale.setPivotX(125);
+        scale.setPivotX(130);
         scale.setPivotY(70);
         windo.getTransforms().addAll(scale);
-        return scale;
+
+        return windo;
     }
 }
 

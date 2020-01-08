@@ -28,9 +28,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     GridPane border = new GridPane();
     TextField velosity = new TextField("15.49160825");
     TextField angle = new TextField("45");
-
     Pane  windo = new Pane ();
-
     VBox conterner = new VBox();
     Button enter = new Button("Enter");
 
@@ -41,13 +39,16 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         windo.setStyle("-fx-background-color: GREEN;");
         //windo.getTransforms().add(new Rotate(180, 120, 120));
         windo.rotateProperty().setValue(180);
+
         angle.setMaxSize(50, 100);
         angle.setMinSize(50, 100);
         velosity.setMaxSize(50, 100);
         velosity.setMinSize(50, 100);
         enter.setPrefSize(50,50);
+
         conterner.getChildren().addAll(velosity, angle, enter);
         enter.setOnAction(this);
+
         border.add(conterner, 0, 0);
         //border.add(windo, 1, 0);
         Scene scene = new Scene(border, 300, 400);
@@ -114,7 +115,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
 
     public  double maxY(double a,double v){
         a = toRadians(a);
-        return a = (pow(v,2)*pow(sin(a),2))/(2*9.82) ;
+        return  (pow(v,2)*pow(sin(a),2))/(2*9.82) ;
     }
     public static double maxX(double a,double v){
         a = toRadians(a);
@@ -123,6 +124,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
 
     @Override
     public void handle(ActionEvent event) {
+        graphics gp = new graphics();
         //graphics g = new graphics();
         //vacuumThrow v = new vacuumThrow(1);
         if (event.getSource() == enter) {
@@ -132,9 +134,8 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             System.out.println(maxY(a,v));
             if (maxX(a,v)>120) {
                 System.out.println("hejdå");
-                graphics gp = new graphics();
-
                 windo = drawBagrund(windo, 250);
+
                 for (double t = 0.01; t < 100; t = t + 0.01) {
                     vacuumThrow vt = new vacuumThrow(1);
                     windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
@@ -145,12 +146,13 @@ public class Controller extends Application implements EventHandler<ActionEvent>
                 System.out.println("hej");
                 //windo = g.drawBow(windo,x);
                 windo = drawBagrund2(windo, 120);
-                Scale scale = new Scale();
+                windo = gp.scale(windo,2);
+                /*Scale scale = new Scale();
                 scale.setX(2);
                 scale.setY(2);
                 scale.setPivotX(125);
                 scale.setPivotY(70);
-                windo.getTransforms().addAll(scale);
+                windo.getTransforms().addAll(scale);*/
                 //windo.setScaleX(2);
                 //windo.setScaleY(2);
 
@@ -169,3 +171,4 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     }
 
 }
+
