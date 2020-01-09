@@ -32,6 +32,8 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     Pane  windo = new Pane ();
     VBox conterner = new VBox();
     Button enter = new Button("Enter");
+    graphics GP = new graphics();
+    vacuumThrow VT = new vacuumThrow(1);
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -50,7 +52,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         conterner.getChildren().addAll(velosity, angle, enter);
         enter.setOnAction(this);
 
-        border.add(conterner, 0, 0);
+        border.getChildren().add(conterner);
 
         Scene scene = new Scene(border, 300, 400);
 
@@ -61,83 +63,36 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     }
 
 
-    public  Pane drawBow(Pane zero, double v, double a, double t) {
 
-        double x;
-        double y;
-        double g = 9.82;
-        y = ((v * sin(a) * t) - ((g * (pow(t, 2))) / 2));
-        x = (v * cos(a) * t);
-
-        if((x < 250) && (y > 0)) {
-            Circle temp = new Circle();
-            temp.setFill(Color.RED);
-            temp.setRadius(1);
-            temp.setCenterX(x);
-            temp.setCenterY(y);
-            zero.getChildren().add(temp);
-
-        }else if (y > 0){
-            System.out.println("Y>0");
-            transform(maxY(a,v),maxX(a,v));
-            Circle temp = new Circle();
-            temp.setFill(Color.RED);
-            temp.setRadius(1);
-            temp.setCenterX(x);
-            temp.setCenterY(y);
-            zero.getChildren().add(temp);
-        }
-
-        return zero;
-    }
-
-    public  double maxY(double a,double v){
-        a = toRadians(a);
-        return  (pow(v,2)*pow(sin(a),2))/(2*9.82) ;
-    }
-    public static double maxX(double a,double v){
-        a = toRadians(a);
-        return (pow(v, 2)*sin(2*a))/9.82;
-    }
 
     @Override
     public void handle(ActionEvent event) {
-        graphics gp = new graphics();
-        vacuumThrow vt = new vacuumThrow(1);
-        //graphics g = new graphics();
-        //vacuumThrow v = new vacuumThrow(1);
+
         if (event.getSource() == enter) {
             double v = Double.valueOf(velosity.getText());
             double a = Double.valueOf(angle.getText());
-            System.out.println(maxX(a,v));
-            System.out.println(maxY(a,v));
-            if (maxX(a,v)>120) {
-                System.out.println("hejdå");
-                windo = gp.drawBagrund(windo, 250);
+
+            if (maxValu.calkulatXmax(a,v)>120) {
+
+                windo = GP.drawBagrund(windo, 250);
 
                 for (double t = 0.01; t < 100; t = t + 0.01) {
 
-                    windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
+                    windo = GP.drawBow(windo,VT.calkulatX(v,a,t),VT.calkulatY(v,a,t));
                 }
 
 
-            }else if (maxX(a,v)<120) {
-                System.out.println("hej");
-                //windo = g.drawBow(windo,x);
-                windo = gp.drawBagrund(windo, 120);
-                windo = gp.scale(windo,2);
-                /*Scale scale = new Scale();
-                scale.setX(2);
-                scale.setY(2);
-                scale.setPivotX(125);
-                scale.setPivotY(70);
-                windo.getTransforms().addAll(scale);*/
-                //windo.setScaleX(2);
-                //windo.setScaleY(2);
+            }else if (maxValu.calkulatXmax(a,v)<120) {
+                VT.setZoom(2);
+                windo = GP.drawBagrund(windo, 120);
+                windo = GP.scale(windo,VT.getZoom());
 
                 for (double t = 0.01; t < 100; t = t + 0.01) {
-                    windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
-
+                    if ((VT.calkulatX(v,a,t)<250)&&(VT.calkulatY(v,a,t)>0)){
+                        GP.drawBow(windo,VT.calkulatX(v,a,t),VT.calkulatY(v,a,t));
+                    }else if ((VT.calkulatY(v,a,t)>0)){
+                        GP.drawBow(windo,VT.calkulatX(v,a,t),VT.calkulatY(v,a,t));
+                    }
                 }
 
             }
@@ -145,8 +100,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             border.add(windo, 1, 0);
         }
     }
-    public void transform(double x,double y){
 
-    }
 
 }

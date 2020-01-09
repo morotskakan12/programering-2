@@ -10,7 +10,6 @@ import javafx.scene.transform.Scale;
 
 public class graphics  {
     public Pane drawBagrund (Pane zero, int setSkal){
-        System.out.println("print Bagrund");
         for(int i =0;i<setSkal;i=i+10){
 
             Rectangle temp = new Rectangle();
@@ -23,7 +22,6 @@ public class graphics  {
         return zero;
     }
     public Pane drawBow(Pane zero, double x,double y) {
-            System.out.println("bow");
         Circle temp = new Circle();
         temp.setFill(Color.RED);
         temp.setRadius(1);
@@ -35,7 +33,6 @@ public class graphics  {
         return zero;
     }
     public Pane scale (Pane windo, double setskal) {
-        System.out.println("scale");
         Scale scale = new Scale();
         scale.setX(setskal);
         scale.setY(setskal);
