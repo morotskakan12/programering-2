@@ -1,3 +1,4 @@
+
 package sample;
 
 import javafx.application.Application;
@@ -36,12 +37,10 @@ public class graphics  {
         Scale scale = new Scale();
         scale.setX(setskal);
         scale.setY(setskal);
-        scale.setPivotX(130);
+        scale.setPivotX(70);
         scale.setPivotY(70);
         windo.getTransforms().addAll(scale);
 
         return windo;
     }
 }
-
-

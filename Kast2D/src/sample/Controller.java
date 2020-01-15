@@ -137,7 +137,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
                 windo = drawBagrund(windo, 250);
 
                 for (double t = 0.01; t < 100; t = t + 0.01) {
-                    vacuumThrow vt = new vacuumThrow(1);
+                    vacuumThrow vt = new vacuumThrow();
                     windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
                 }
 
@@ -145,7 +145,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             }else if (maxX(a,v)<120) {
                 System.out.println("hej");
                 //windo = g.drawBow(windo,x);
-                windo = drawBagrund2(windo, 120);
+                windo = gp.drawBagrund(windo, 120);
                 windo = gp.scale(windo,2);
                 /*Scale scale = new Scale();
                 scale.setX(2);

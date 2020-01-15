@@ -3,8 +3,10 @@ package sample;
 import static java.lang.Math.*;
 
 public class vacuumThrow extends Calkulat {
-    public vacuumThrow(double zoom) {
-        super(zoom);
+
+
+    public vacuumThrow() {
+
     }
 
     @Override

@@ -1,8 +1,8 @@
 package sample;
 
 public class resistanceThrow extends Calkulat {
-    public resistanceThrow(double zoom) {
-        super(zoom);
+    public resistanceThrow() {
+
     }
 
     @Override
