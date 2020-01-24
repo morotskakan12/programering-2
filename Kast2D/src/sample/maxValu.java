@@ -14,4 +14,5 @@ public class maxValu{
         return (pow(v,2)*pow(sin(a),2))/(2*9.82) ;
     }
 
+
 }

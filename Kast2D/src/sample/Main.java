@@ -37,7 +37,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     VBox conterner = new VBox();
     VBox maxOf = new VBox();
     Button enter = new Button("Enter");
-    Button clear = new Button("clear");
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -51,11 +51,10 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         velosity.setMaxSize(50, 100);
         velosity.setMinSize(50, 100);
         enter.setPrefSize(50,50);
-        clear.setPrefSize(50,50);
-        conterner.getChildren().addAll(velosity, angle, enter, clear);
+
+        conterner.getChildren().addAll(velosity, angle, enter);
 
         enter.setOnAction(this);
-        clear.setOnAction(this);
 
         border.add(conterner, 0, 0);
 
@@ -71,19 +70,17 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         graphics gp = new graphics();
         vacuumThrow vt = new vacuumThrow();
+        border = gp.gridclear(border);
+        windo = gp.paneClear(windo);
+        border.add(conterner, 0, 0);
         if (event.getSource() == enter) {
-            clearWindo = windo;
             double v = Double.valueOf(velosity.getText());
             double a = toRadians(Double.valueOf(angle.getText()));
-            maxOfX.setText( "Max Valu of X"+" "+(Double.toString((int)maxValu.calkulatXmax(v,a))));
-            maxOfY.setText( "Max Valu of Y"+" "+(Double.toString((int)maxValu.calkulatYmax(v,a))));
-            maxOf.getChildren().addAll(maxOfX,maxOfY);
+            maxOf = gp.setText(maxOf,maxOfY,maxOfX,v,a);
+
             border.add(maxOf,0,1);
-            System.out.println(maxValu.calkulatXmax(v,a));
-            System.out.println(maxValu.calkulatYmax(v,a));
 
             if (maxValu.calkulatXmax(v,a)>120) {
-                System.out.println("hejdå");
                 windo = gp.drawBagrund(windo, 250);
 
                 for (double t = 0.01; t < 100; t = t + 0.01) {
@@ -96,7 +93,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 
 
             }else if (maxValu.calkulatXmax(v,a)<120) {
-                System.out.println("hej");
 
                 windo = gp.drawBagrund(windo, 120);
                 windo = gp.scale(windo,2);
@@ -114,6 +110,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             }
 
             border.add(windo, 1, 0);
+
         }
     }
 
