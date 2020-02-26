@@ -13,15 +13,13 @@ public class accelerationResistance extends Calkulat {
     }
 
     @Override
-    public double calkulatX(double v, double a, double t) {
-
-        //-fAre()*v*vX;
-        return 0;
+    public double calkulatX(double v, double v0x) {
+        return -fAre()*v*v0x;
     }
 
     @Override
-    public double calkulatY(double v, double a, double t) {
-        //double aY  =-getG()-fAre()*v*vY;
-        return 0;
+    public double calkulatY(double v, double v0y) {
+
+        return -getG()-(fAre()*v*v0y);
     }
 }

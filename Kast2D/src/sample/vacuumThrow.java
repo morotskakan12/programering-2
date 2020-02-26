@@ -2,22 +2,22 @@ package sample;
 
 import static java.lang.Math.*;
 
-public class vacuumThrow extends Calkulat {
+public class vacuumThrow {
 
 
     public vacuumThrow() {
 
     }
 
-    @Override
     public double calkulatX(double v, double a, double t) {
-        return (v * cos(a) * t);
+        vector vector = new vector();
+        return (v* cos(a)* t);
     }
 
-    @Override
-    public double calkulatY(double v, double a, double t) {
 
-        return ((v * sin(a) * t) - ((getG() * (pow(t, 2))) / 2));
+    public double calkulatY(double v, double a, double t) {
+        vector vector = new vector();
+        return (v * sin(a) * t) - ((9.82* (pow(t, 2))) / 2);
 
     }
 

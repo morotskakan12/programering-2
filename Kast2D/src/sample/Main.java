@@ -37,6 +37,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     VBox conterner = new VBox();
     VBox maxOf = new VBox();
     Button enter = new Button("Enter");
+    resistanceThrow rc = new resistanceThrow();
 
 
     @Override
@@ -82,12 +83,30 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 
             if (maxValu.calkulatXmax(v,a)>120) {
                 windo = gp.drawBagrund(windo, 250);
+                double vrc = v;
+                double v0x = vrc*cos(a); double v0y = vrc*sin(a);
+                double a0y = rc.calkulatY(vrc,v0x); double a0x = rc.calkulatX(vrc,v0x);
 
                 for (double t = 0.01; t < 100; t = t + 0.01) {
-                    if((vt.calkulatX(v,a,t) < 250) && (vt.calkulatY(v,a,t)> 0)) {
-                    windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
-                    }else if (vt.calkulatY(v,a,t) > 0){
-                        windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
+                    System.out.println("hejdå");
+                    System.out.println("");
+                    System.out.println(rc.calkulatX1(v,a,t));
+                    System.out.println(rc.calkulatY1(v,a,t));
+                    if(((vt.calkulatX(v,a,t) < 250) && (vt.calkulatY(v,a,t)> 0))||((rc.calkulatY1(v,a,t)> 0)&&(rc.calkulatX1(v,a,t)< 0))) {
+                    //windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
+                    windo = gp.drawBow(windo,vt.calkulatX(10+v,a,t),vt.calkulatY(10+v,a,t));
+
+                    windo = gp.drawBow(windo,rc.calkulatX1(v0x,a,t),rc.calkulatY1(v0y,a,t));
+                    v0x = v0x + (a0x *t); v0y = v0y + (a0y *t);
+
+                    vrc = Math.sqrt((pow(v0x,2))+(pow(v0y,2)));
+
+                    a0y = rc.calkulatY(vrc,v0x); a0x = rc.calkulatX(vrc,v0x);
+
+                    }else if ((vt.calkulatY(v,a,t) > 0)||(rc.calkulatY1(v,a,t)> 0)){
+                       // windo = gp.drawBow(windo,vt.calkulatX(10+v,a,t),vt.calkulatY(10+v,a,t));
+
+                        windo = gp.drawBow(windo,rc.calkulatX1(v,a,t),rc.calkulatY1(v,a,t));
                     }
                 }
 
@@ -99,10 +118,21 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 
 
                 for (double t = 0.01; t < 100; t = t + 0.01) {
-                    if((vt.calkulatX(v,a,t) < 250) && (vt.calkulatY(v,a,t)> 0)) {
-                        windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
-                    }else if (vt.calkulatY(v,a,t) > 0){
-                        windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
+                    System.out.println("hej");
+                    System.out.println("");
+                    System.out.println(rc.calkulatX1(v,a,t));
+                    System.out.println(rc.calkulatY1(v,a,t));
+                    if(((vt.calkulatX(v,a,t) < 250) && (vt.calkulatY(v,a,t)> 0))||((rc.calkulatY1(v,a,t)> 0)&&(rc.calkulatX1(v,a,t)< 0))) {
+                       //windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
+                       // windo = gp.drawBow(windo,vt.calkulatX(10+v,a,t),vt.calkulatY(10+v,a,t));
+
+                        windo = gp.drawBow(windo,rc.calkulatX1(v,a,t),rc.calkulatY1(v,a,t));
+                    }else if ((vt.calkulatY(v,a,t) > 0)||(rc.calkulatY1(v,a,t)> 0)){
+                        //windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
+                       // windo = gp.drawBow(windo,vt.calkulatX(10+v,a,t),vt.calkulatY(10+v,a,t));
+                        System.out.println(rc.calkulatX1(v,a,t));
+                        System.out.println(rc.calkulatY1(v,a,t));
+                        windo = gp.drawBow(windo,rc.calkulatX1(v,a,t),rc.calkulatY1(v,a,t));
                     }
 
                 }
