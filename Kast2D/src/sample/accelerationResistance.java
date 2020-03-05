@@ -9,7 +9,7 @@ public class accelerationResistance{
         double P = 1.2041;
         double A = PI*pow(5,2);
         double M = 5;
-        return ((C*P*A)/2*M);
+        return ((C*P*A)/(2*M));
     }
 
 

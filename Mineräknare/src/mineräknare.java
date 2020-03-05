@@ -5,17 +5,10 @@ public class mineräknare {
 
     public double matte(String progression) {
 
-        calutlat add = new addeton();
-        calutlat sub = new subtraktion();
-        calutlat div = new division();
-        calutlat mult = new multiplikation();
-        calutlat pow = new power();
-        calutlat pro = new prosent();
-
         double a;
         double b;
         double tal = 0.0;
-
+        oporaton oporaton = new oporaton(new Add() );
         ArrayList<Character> chars = new ArrayList<Character>();
         ArrayList<Double> index = new ArrayList<Double>();
 
@@ -28,28 +21,35 @@ public class mineräknare {
             b = index.get(1);
 
             if (chars.get(0) == '/') {
-
-                tal = div.calculate(a, b);
+                    oporaton = new oporaton(new division());
+                tal = oporaton.executeOporaton(a, b);
 
             } else if (chars.get(0) == '*') {
 
-                tal = mult.calculate(a, b);
+                oporaton = new oporaton(new multiplikation());
+
+                tal = oporaton.executeOporaton(a, b);
 
             } else if (chars.get(0) == '+') {
-
-                tal = add.calculate(a, b);
+                oporaton = new oporaton(new Add());
+                tal = oporaton.executeOporaton(a, b);
 
             } else if (chars.get(0) == '-') {
 
-                tal = sub.calculate(a, b);
+                oporaton = new oporaton(new subtraktion());
+
+                tal = oporaton.executeOporaton(a, b);
 
             } else if (chars.get(0) == '^') {
+                oporaton = new oporaton(new power());
 
-                tal = pow.calculate(a, b);
+                tal = oporaton.executeOporaton(a, b);
 
             } else if (chars.get(0) == '%') {
 
-                tal = pro.calculate(a, b);
+                oporaton = new oporaton(new prosent());
+
+                tal = oporaton.executeOporaton(a, b);
 
             }
 
