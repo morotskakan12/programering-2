@@ -138,7 +138,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
 
                 for (double t = 0.01; t < 100; t = t + 0.01) {
                     vacuumThrow vt = new vacuumThrow();
-                    windo = gp.drawBow(windo,vt.calkulatX(v,a,t),vt.calkulatY(v,a,t));
+                    //windo = gp.drawBow(windo,vt.calkulatX(v,a),vt.calkulatY(v,a,t));
                 }
 
 

@@ -25,9 +25,20 @@ public class graphics {
         }
         return zero;
     }
-    public Pane drawBow(Pane zero, double x,double y) {
+    public Pane drawBowRed(Pane zero, double x,double y) {
         Circle temp = new Circle();
         temp.setFill(Color.RED);
+        temp.setRadius(0.5);
+        temp.setCenterX(x);
+        temp.setCenterY(y);
+        zero.getChildren().add(temp);
+
+
+        return zero;
+    }
+    public Pane drawBowBlue(Pane zero, double x,double y) {
+        Circle temp = new Circle();
+        temp.setFill(Color.BLUE);
         temp.setRadius(0.5);
         temp.setCenterX(x);
         temp.setCenterY(y);

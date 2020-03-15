@@ -84,9 +84,11 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             double v0x = vrc*cos(a); double v0y = vrc*sin(a);
             double a0y = accelerationResistance.calkulatY(vrc,v0x);double a0x = accelerationResistance.calkulatX(vrc,v0x);
 */
+
                 windo = gp.drawBagrund(windo, 250);
                    windo =  calkRIstens.main(windo,v,a);
-            windo = gp.scale(windo,1);
+                   windo = vt.calkulatX(windo,v,a);
+            windo = gp.scale(windo,2);
             border.add(windo, 1, 0);
 
                 /*for (double t = 1; t < 100; t = t + 1) {
