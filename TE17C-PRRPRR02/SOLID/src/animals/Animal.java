@@ -1,5 +1,7 @@
 package animals;
 
+import interfaces.IMotions;
+
 public abstract class Animal {
 
     private String _color;
@@ -11,6 +13,11 @@ public abstract class Animal {
         _description = description;
     }
 
+    public abstract void speak();
+
+    public abstract void sleep();
+
+    public abstract void eat();
     public String getColor() {
         return _color;
     }
@@ -19,8 +26,8 @@ public abstract class Animal {
         _color = color;
     }
 
-    public String get_description() {
-        return _description;
+    public void printDescritption() {
+        System.out.println(_description);
     }
 
 }

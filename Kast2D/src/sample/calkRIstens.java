@@ -9,7 +9,8 @@ public class calkRIstens {
 
     public static Pane main(Pane windo, double v0, double a){
         graphics gp = new graphics();
-
+        double maxYVal = 0;
+        double t = 0.01;
         double v0x = v0*Math.cos(a);
         double v0y = v0*Math.sin(a);
         double a0x = -FRec()*v0*v0x;
@@ -22,7 +23,7 @@ public class calkRIstens {
         double v0y = v0*Math.sin(a);
         double X=0.0;
         double Y= 0.0;*/
-        for(double t = 0.01; t < 100; t = t + 0.01) {
+       // for(double t = 0.01; t < 100; t = t + 0.01) {
 
 
           /*  X = X + (v0x * 1);
@@ -39,34 +40,37 @@ public class calkRIstens {
             double aY = fy/5;
             v0x = 1*aX;
             v0y = 1*aY;*/
-            if (Y<0){
-                System.out.println(X);
-                System.out.println(Y);
-                return windo;
-            }
-            X = X + (v0x * 0.1);
+            do {
 
-            Y = Y + (v0y * 0.1);
+            X = X + (v0x * t);
+
+            Y = Y + (v0y * t);
+            if (Y>maxYVal){
+                maxYVal = Y;
+            }
             windo = gp.drawBowRed(windo,X,Y);
-             v0x = v0x + (a0x * 0.1);
-            v0y = v0y + (a0y * 0.1);
+             v0x = v0x + (a0x * t);
+            v0y = v0y + (a0y * t);
             v0 = Math.sqrt((pow(v0x, 2)) + (pow(v0y, 2)));
             a0x = -FRec() * v0 * v0x;
 
             a0y = -9.82 - (FRec() * v0 * v0y);
 
-        }
+        }while ((Y>0)&&(X<12500));
+        System.out.println("max X RF"+" "+X);
+        System.out.println("max Y RF"+" "+maxYVal);
         return windo;
     }
     public static double FRec(){
         double C = 0.45;
         double P = 1.2041;
+        double A = PI*pow(0.155,2);
+        double M = 10.88;
 
-        double A = PI*pow(1.91,2);
-        double M = 2.58;
 
-        return (((C*P*A)/(2*M)))*0.1;
+        return (((C*P*A)/(2*M)));
     }
+
 
     }
 

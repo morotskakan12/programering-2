@@ -1,4 +1,4 @@
 package interfaces;
 
-public interface IDog extends ISit,ISkip,IRollSwim,IJump,IRun {
+public interface IDog extends IJump{
 }

@@ -1,10 +1,6 @@
 package animals;
 
-import interfaces.IBasic;
-import interfaces.IFourLegs;
-import interfaces.IHefgrhog;
-
-public class Hedgehog extends Animal implements IBasic,IFourLegs, IHefgrhog {
+public class Hedgehog extends Animal {
 
     public Hedgehog(String color, String descpriton)  {
         super(color,descpriton);
@@ -23,6 +19,11 @@ public class Hedgehog extends Animal implements IBasic,IFourLegs, IHefgrhog {
     }
 
     @Override
+    public void fly() {
+        //not applicable!
+    }
+
+    @Override
     public void trot() {
         System.out.println("Hedgehog is trotting!");
     }
@@ -30,6 +31,31 @@ public class Hedgehog extends Animal implements IBasic,IFourLegs, IHefgrhog {
     @Override
     public void skip() {
         System.out.println("Hedgehog is skipping and hopping!");
+    }
+
+    @Override
+    public void slither() {
+        //not applicable!
+    }
+
+    @Override
+    public void jump() {
+        //not applicable!
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("Hedgehog is stalking snaek!");
+    }
+
+    @Override
+    public void run() {
+        //not applicable!
+    }
+
+    @Override
+    public void roll() {
+        System.out.println("Sonic is rolling so fast!");
     }
 
     @Override
@@ -41,17 +67,4 @@ public class Hedgehog extends Animal implements IBasic,IFourLegs, IHefgrhog {
     public void dash() {
         System.out.println("Sonic the speedster!");
     }
-
-    @Override
-    public void swim() {
-        System.out.println("Hedgehog is stalking snaek!");
-    }
-
-
-    @Override
-    public void roll() {
-        System.out.println("Sonic is rolling so fast!");
-    }
-
-
 }

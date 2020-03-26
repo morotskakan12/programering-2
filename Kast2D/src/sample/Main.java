@@ -28,8 +28,8 @@ import static java.lang.Math.*;
 
 public class Main extends Application implements EventHandler<ActionEvent> {
     GridPane border = new GridPane();
-    TextField velosity = new TextField("15.49160825");
-    TextField angle = new TextField("45");
+    TextField velosity = new TextField("velosity");
+    TextField angle = new TextField("angle");
     Text maxOfX = new Text("");
     Text maxOfY = new Text("");
     Pane  windo = new Pane ();
@@ -44,7 +44,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     public void start(Stage primaryStage) throws Exception {
         windo.setMaxHeight(150);
         windo.setMaxWidth(200);
-        windo.setStyle("-fx-background-color: GREEN;");
         windo.rotateProperty().setValue(180);
 
         angle.setMaxSize(50, 100);
@@ -84,11 +83,32 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             double v0x = vrc*cos(a); double v0y = vrc*sin(a);
             double a0y = accelerationResistance.calkulatY(vrc,v0x);double a0x = accelerationResistance.calkulatX(vrc,v0x);
 */
+  maxValu MX = new maxValu();
+         if (MX.calkulatXmax(v,a)>1250){
+            windo = gp.drawBagrund(windo, 12500);
+            windo =  calkRIstens.main(windo,v,a);
+            windo = vt.calkulatX(windo,v,a);
+            windo = gp.scale(windo,0.02);}
+         else if (MX.calkulatXmax(v,a)>300){
+                    windo = gp.drawBagrund(windo, 1250);
+                    windo =  calkRIstens.main(windo,v,a);
+                    windo = vt.calkulatX(windo,v,a);
+                    windo = gp.scale(windo,0.2);
+                }
+                else if(MX.calkulatXmax(v,a)<125){
 
-                windo = gp.drawBagrund(windo, 250);
+                    windo = gp.drawBagrund(windo, 120);
+                    windo =  calkRIstens.main(windo,v,a);
+                    windo = vt.calkulatX(windo,v,a);
+                    windo = gp.scale(windo,2);
+
+
+            }else {
+                windo = gp.drawBagrund(windo, 310);
                    windo =  calkRIstens.main(windo,v,a);
                    windo = vt.calkulatX(windo,v,a);
-            windo = gp.scale(windo,2);
+            windo = gp.scale(windo,0.8);
+                }
             border.add(windo, 1, 0);
 
                 /*for (double t = 1; t < 100; t = t + 1) {

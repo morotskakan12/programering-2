@@ -1,8 +1,6 @@
 package animals;
 
-import interfaces.IBasic;
-
-public class Bird  extends Animal implements IBasic {
+public abstract class Bird extends Animal{
 
     public Bird(String color, String descpriton)  {
         super(color,descpriton);

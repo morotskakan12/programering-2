@@ -1,0 +1,19 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<BorderPane fx:controller="sample.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <center>
+        <Rectangle fill="blue" height="100" width="100" fx:id="_rectangel">
+        </Rectangle>
+    </center>
+    <bottom>
+        <Button text="hej" prefHeight="50" prefWidth="50" onAction="#buttenclick">
+
+        </Button>
+    </bottom>
+</BorderPane>

@@ -17,18 +17,20 @@ public class graphics {
         for(int i =0;i<setSkal;i=i+10){
 
             Rectangle temp = new Rectangle();
-            temp.setWidth(1);
+            temp.setWidth(5);
             temp.setHeight(10);
             temp.setX(i);
             temp.setY(0);
             zero.getChildren().add(temp);
         }
+        zero.setStyle("-fx-background-color: GREEN;");
+
         return zero;
     }
     public Pane drawBowRed(Pane zero, double x,double y) {
         Circle temp = new Circle();
         temp.setFill(Color.RED);
-        temp.setRadius(0.5);
+        temp.setRadius(2);
         temp.setCenterX(x);
         temp.setCenterY(y);
         zero.getChildren().add(temp);
@@ -39,7 +41,7 @@ public class graphics {
     public Pane drawBowBlue(Pane zero, double x,double y) {
         Circle temp = new Circle();
         temp.setFill(Color.BLUE);
-        temp.setRadius(0.5);
+        temp.setRadius(2);
         temp.setCenterX(x);
         temp.setCenterY(y);
         zero.getChildren().add(temp);
@@ -53,6 +55,7 @@ public class graphics {
         scale.setY(setskal);
         scale.setPivotX(0);
         scale.setPivotY(50);
+
         windo.getTransforms().addAll(scale);
 
         return windo;

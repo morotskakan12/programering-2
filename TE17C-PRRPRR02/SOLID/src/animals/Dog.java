@@ -1,11 +1,8 @@
 package animals;
 
-import interfaces.IBasic;
 import interfaces.IDog;
-import interfaces.IFourLegs;
-import interfaces.IJump;
 
-public class Dog extends Animal implements IBasic, IFourLegs, IDog {
+public class Dog extends Animal implements IDog {
 
     public Dog(String color, String descpriton)  {
         super(color,descpriton);
@@ -24,6 +21,11 @@ public class Dog extends Animal implements IBasic, IFourLegs, IDog {
     }
 
     @Override
+    public void fly() {
+        //not applicable!
+    }
+
+    @Override
     public void trot() {
         System.out.println("Dog is a champion!");
     }
@@ -31,6 +33,31 @@ public class Dog extends Animal implements IBasic, IFourLegs, IDog {
     @Override
     public void skip() {
         System.out.println("Dog is happy!");
+    }
+
+    @Override
+    public void slither() {
+        //not applicable!
+    }
+
+    @Override
+    public void jump() {
+        System.out.println("Dog is agile!");
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("Dog is swimming!");
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Dog running!");
+    }
+
+    @Override
+    public void roll() {
+        System.out.println("Who's a good boi!");
     }
 
     @Override
@@ -42,28 +69,4 @@ public class Dog extends Animal implements IBasic, IFourLegs, IDog {
     public void dash() {
         System.out.println("Dog so fast!");
     }
-
-    @Override
-    public void swim() {
-        System.out.println("Dog is swimming!");
-    }
-
-    @Override
-    public void roll() {
-        System.out.println("Who's a good boi!");
-    }
-
-    @Override
-    public void jump() {
-        System.out.println("Dog is agile!");
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Dog running!");
-    }
-
-
-
-
 }

@@ -16,14 +16,14 @@ public class vacuumThrow {
         graphics gp = new graphics();
         double Y = 0;
         double X = 0;
-        for(double t = 0.01; t < 100; t = t + 0.01) {
-            if ((Y<0)||(X>250)){
-                return windo;
-            }
-            Y = (v * sin(a) * t) - ((9.82* (pow(t, 2))) / 2);
+        double t = 0.01;
+
+
+        do{ Y = (v * sin(a) * t) - ((9.82* (pow(t, 2))) / 2);
             X = (v* cos(a)* t);
             gp.drawBowBlue(windo,X,Y);
-        }
+               t = t + 0.001;
+        }while ((Y>0)&&(X<12500));
         return windo;
     }
 

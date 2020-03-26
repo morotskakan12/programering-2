@@ -1,6 +1,5 @@
 package sample;
 
-
 import animals.*;
 
 public class Main   {
@@ -25,7 +24,7 @@ public class Main   {
             animal.sleep();
             animal.speak();
             animal.setColor("Grey");
-            animal.get_description();
+            animal.printDescritption();
             System.out.println();
 
             move(animal);

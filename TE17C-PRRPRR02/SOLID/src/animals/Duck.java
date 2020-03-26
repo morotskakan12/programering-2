@@ -11,7 +11,22 @@ public class Duck extends Bird {
         System.out.println("Duck is soaring majestically!");
     }
 
-      @Override
+    @Override
+    public void trot() {
+        //not applicable!
+    }
+
+    @Override
+    public void skip() {
+        //not applicable!
+    }
+
+    @Override
+    public void slither() {
+        //not applicable!
+    }
+
+    @Override
     public void jump() {
         System.out.println("Duck is jumping!");
     }
@@ -36,4 +51,8 @@ public class Duck extends Bird {
         System.out.println("Duck is squatting on dem eggs!");
     }
 
+    @Override
+    public void dash() {
+        //not applicable!
+    }
 }
